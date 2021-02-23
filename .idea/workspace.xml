@@ -20,6 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e324d1d3-f0c3-4db1-9adb-f22c0050fd84" name="Default Changelist" comment="fer">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/.idea.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Classification/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Classification/main.py" afterDir="false" />
     </list>
@@ -51,7 +58,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../trader" />
   </component>
   <component name="RunManager" selected="Python.main (1)">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -125,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1610670448347</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fer">
+      <created>1610730058119</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610730058119</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,26 +164,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1610538155609" />
-    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1610535235874">
+    <state x="421" y="82" key="FileChooserDialogImpl" timestamp="1614092132570">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1610535235874" />
-    <state width="1259" height="211" key="GridCell.Tab.0.bottom" timestamp="1610729806292">
+    <state x="421" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1614092132570" />
+    <state width="619" height="189" key="GridCell.Tab.0.bottom" timestamp="1613155873757">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="211" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1610729806292" />
-    <state width="1259" height="211" key="GridCell.Tab.0.center" timestamp="1610729806292">
+    <state width="619" height="189" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1613155873757" />
+    <state width="619" height="189" key="GridCell.Tab.0.center" timestamp="1613155873757">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="211" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1610729806292" />
-    <state width="1259" height="211" key="GridCell.Tab.0.left" timestamp="1610729806292">
+    <state width="619" height="189" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1613155873757" />
+    <state width="619" height="189" key="GridCell.Tab.0.left" timestamp="1613155873756">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="211" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1610729806292" />
-    <state width="1259" height="211" key="GridCell.Tab.0.right" timestamp="1610729806292">
+    <state width="619" height="189" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1613155873756" />
+    <state width="619" height="189" key="GridCell.Tab.0.right" timestamp="1613155873757">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="211" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1610729806292" />
+    <state width="619" height="189" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1613155873757" />
     <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1610713869731">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

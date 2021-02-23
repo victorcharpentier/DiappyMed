@@ -7,26 +7,27 @@ import numpy as np
 from numpy import unique
 import math
 from sklearn.decomposition import PCA
+import statistics
 
-list=[]
-for i in range(0,1000,1):
-    list.append("< " + str(i / 1000000).replace('.', ','))
-    list.append("< " + str(i / 100000).replace('.', ','))
-    list.append("< " + str(i / 10000).replace('.', ','))
-    list.append ("< "+str(i/1000).replace('.',','))
-    list.append("< " + str(i / 100).replace('.', ','))
-    list.append("< " + str(i / 10).replace('.', ','))
-    list.append("< " + str(i).replace('.', ','))
+# list=[]
+# for i in range(0,1000,1):
+#     list.append("< " + str(i / 1000000).replace('.', ','))
+#     list.append("< " + str(i / 100000).replace('.', ','))
+#     list.append("< " + str(i / 10000).replace('.', ','))
+#     list.append("< " +str(i/1000).replace('.',','))
+#     list.append("< " + str(i / 100).replace('.', ','))
+#     list.append("< " + str(i / 10).replace('.', ','))
+#     list.append("< " + str(i).replace('.', ','))
 
 
 list_na_values=['-','','traces']
-for i in list_na_values:
-    list.append(i)
+#for i in list_na_values:
+#    list.append(i)
 
 data=pd.read_excel('C:\\Users\\charp\\Downloads\\Table Ciqual 2020_FR_2020 07 07.xls',
-                   keep_default_na=False,
-                    na_values=list_na_values,
-                   decimal=",")
+                    keep_default_na=False,
+                     na_values=list_na_values,
+                    decimal=",")
 
 
 
@@ -66,18 +67,51 @@ features=['Energie, Règlement UE N° 1169/2011 (kJ/100 g)','Energie, Règlement
           'Vitamine B5 ou Acide pantothénique (mg/100 g)','Vitamine B6 (mg/100 g)',
           'Vitamine B9 ou Folates totaux (µg/100 g)','Vitamine B12 (µg/100 g)']
 
+
 #selection des data
+
+#data['Eau (g/100 g)'].str.strip('< ').astype(float)
 
 for column in features:
     for k in data[column]:
-        if "<" in str(k) and k not in list_na_values :
-            list_na_values.append(k)
+         if "< " in str(k):
+             k=k[2:]
+             for i in range(len(k)):
+                 if k[i]==',':
+                    k=k[0:i]+'.'+k[i+1:len(k)+1]
+             k = float(k)/2
+             print(k)
+         # if "<" in str(k):
+         #     k=k[1:]
+         #     for i in range(len(k)):
+         #         if k[i]==',':
+         #            k=k[0:i]+'.'+k[i+1:len(k)+1]
+         #     k=float(k)/2
+         #     k = str(k)
+         #     for i in range(len(k)):
+         #         if k[i]==',':
+         #            k=k[0:i]+'.'+k[i+1:len(k)+1]
+         #     print(k)
+
+
+         if " " in str(k):
+             k = k[1:]
+
+
+#with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+#    print(data)
+
+
+
+#on tranforme les "<x" par x/2
+
+
 print(list_na_values)
 
-data=pd.read_excel('C:\\Users\\charp\\Downloads\\Table Ciqual 2020_FR_2020 07 07.xls',
-                   keep_default_na=False,
-                    na_values=list_na_values,
-                   decimal=",")
+# data=pd.read_excel('C:\\Users\\charp\\Downloads\\Table Ciqual 2020_FR_2020 07 07.xls',
+#                    keep_default_na=False,
+#                     na_values=list_na_values,
+#                    decimal=",")
 
 #selection des features
 
@@ -86,29 +120,50 @@ def infos(column):
     for k in column:
         if not math.isnan(float(k)):
             list.append(float(k))
-    list.sort()
-    list=np.array(list)
-    list=np.unique(list)
-    return np.var(list)/np.mean(list),(np.var(list)),np.mean(list),len(list),\
-           (list[1],list[2],list[3])
+    moyenne=statistics.mean(list)
+    variance=statistics.variance(list)
+    ecart_type=math.sqrt(variance)
+    return ecart_type/moyenne,ecart_type,moyenne,len(list),\
+           list
 
 
-list_na_values_min=['-','','traces']
-data_min=pd.read_excel('C:\\Users\\charp\\Downloads\\Table Ciqual 2020_FR_2020 07 07.xls',
-                   keep_default_na=False,
-                    na_values=list_na_values_min,
-                   decimal=",")
+# list_na_values_min=['-','','traces']
+# data_min=pd.read_excel('C:\\Users\\charp\\Downloads\\Table Ciqual 2020_FR_2020 07 07.xls',
+#                    keep_default_na=False,
+#                     na_values=list_na_values_min,
+#                    decimal=",")
 
-for column in features:
-    list=[]
-    a,b,c,d,e=infos(data[column])
-    for k in data_min[column]:
-        if k in list_na_values:
-            list.append(str(k)+" apparaît ")
-    print(column)
-    list = pd.Series(list)
-    print(list.value_counts())
-    print("les minimums sont "+str(e)+" et la moyenne -2x la variance est de "+str(c-(2*b))+"\n")
+# def les_x_minimums(list,x):
+#     list_1=[]
+#     list_2=[]
+#     for i in list:
+#         if i not in list_1:
+#             list_1.append(i)
+#     list_1.sort()
+#     if x>len(list_1):
+#         for k in range(len(list_1)):
+#             list_2.append((list_1[k], list.count(list_1[k])))
+#     else:
+#         for k in range(x):
+#             list_2.append((list_1[k],list.count(list_1[k])))
+#     return list_2
+
+#print(les_x_minimums([1,4,8,5,4,2,3,5,8,9,4,5,1,2,3,5,8],2))
+
+
+
+# for column in features:
+#     list=[]
+#     ratio_ecart_type_moyenne, ecart_type, moyenne, nb_individus,list_min=infos(data[column])
+#     for k in data_min[column]:
+#         if k in list_na_values:
+#             list.append(str(k)+" apparaît ")
+#     print(column)
+#     list=pd.Series(list)
+#     print(list.value_counts())
+#     print("les minimums sont ")
+#     print(les_x_minimums(list_min,10))
+#     print("la moyenne est de "+str(moyenne))
 
 
 
@@ -121,8 +176,8 @@ for column in features:
 
 selection_features=[]
 for k in features:
-    ratio_var_mean,var,mean,samples=infos(data[k])
-    if ratio_var_mean>1 and samples>2000:
+    ratio_var_mean,var,mean,samples,a=infos(data[k])
+    if ratio_var_mean<0.05 and samples>2000:
         selection_features.append(k)
         print(k)
 
@@ -145,12 +200,18 @@ print(data_trié)
 inertia=[]
 i_range=range(8,9)
 for i in i_range:
+    result=[]
+    for k in range(i):
+        result.append([])
     model=KMeans(n_clusters=i)
     model.fit(data_trié)
     prediction=model.predict(data_trié)
     for k in range(len(prediction)):
+        result[prediction[k]].append(str(label['alim_nom_fr'][k])+" est un/une "+str(label['alim_grp_nom_fr'][k]))
         print(str(label['alim_nom_fr'][k])+" est un/une "+str(label['alim_grp_nom_fr'][k])+" classé dans le cluster "+str(prediction[k]))
     print(model.cluster_centers_)
+    for j in range(len(result)):
+        print(result[j])
     inertia.append(model.inertia_)
 plt.plot(i_range,inertia)
 plt.show()
@@ -165,6 +226,49 @@ plt.show()
 # plt.plot(K_range,inertia_aglo)
 #
 # plt.show()
+
+
+
+#DecisionTree
+scoring="accuracy")
+print("score DecisionTree : "+str(from sklearn import tree
+
+clf_DecisionTree = tree.DecisionTreeClassifier()
+clf_DecisionTree = clf.fit(X, Y)
+
+scores_DecisionTree = cross_val_score(clf_DecisionTree, X, Y, cv=5, scores_DecisionTree.mean()))
+
+
+#RandomForest
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import validation_curve
+
+#choix de l'hyperparamètre "n_estimators"
+model= RandomForestClassifier()
+k=np.arange(1,50)
+train_score, val_score = validation_curve(model, X, Y, "n_estimators", k, cv=5)
+plt.plot(k,train_score(axis=1))
+plt.plot(k,val_score(axis=1))
+plt.ylabel("score")
+plt.xlabel("n_neighbors")
+plt.legend()
+plt.show()
+
+clf_RandomForestClassifier = RandomForestClassifier(n_estimators=10)
+clf_RandomForestClassifier = clf.fit(X, y)
+
+scores_RandomForest = cross_val_score(clf_RandomForestClassifier, X, Y, cv=5, scoring="accuracy")
+print("score RandomForest : "+str(scores_RandomForest.mean()))
+
+#Multi-Layer Perceptron
+from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {"alpha":n}
+clf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(5, 2), random_state=1)
+
+>>> clf.fit(X, y)
+
 
 
 
